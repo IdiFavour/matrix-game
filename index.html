@@ -7,14 +7,14 @@
     <title>Document</title>
     <style>
         .main-cover{
-            width: 400px;
+            width: 500px;
             display: flex;
             flex-wrap: wrap;
         }
         .small-box{
             width: 100px;
             height: 100px;
-            background-color: green;
+            background-color: blue;
             margin: 2px;
         }
     </style>
@@ -33,15 +33,30 @@
         <div class="small-box"></div>
         <div class="small-box"></div>
         <div class="small-box"></div>
+        <div class="small-box"></div>
+        <div class="small-box"></div>
+        <div class="small-box"></div>
+        <div class="small-box"></div>
     </div>
    <script>
        let boxes = document.querySelectorAll(".small-box")
        let red_boxes = []
        for (let i = 0; i < boxes.length; i++) {
            let element = boxes[i];
-           element.style.background = 'blue'
            element.addEventListener('click', () => {
-                element.style.background = 'red'
+                if (red_boxes.length >= 2) {
+                    red_boxes.push(element)
+                    red_boxes[0].style.background = 'blue'
+                    red_boxes.shift()  
+                }
+                else{
+                    red_boxes.push(element)
+                }
+                console.log(red_boxes)
+                for (let i = 0; i < red_boxes.length; i++) {
+                    const element = red_boxes[i];
+                    element.style.background = 'red'
+                }
            })
        }
    </script> 
